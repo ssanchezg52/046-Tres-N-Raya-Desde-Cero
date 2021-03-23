@@ -21,6 +21,7 @@ public class MyActionListener implements ActionListener {
 		//objeto componente que dispara el evento
 		JButton boton=(JButton)e.getSource();
 		findMyButton(boton);
+		//Es la chapuza total
 	}
 
 	private void findMyButton(JButton boton) {
