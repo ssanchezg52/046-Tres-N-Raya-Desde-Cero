@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import control.MyActionListener;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 
 public class UI extends JFrame {
 
@@ -35,11 +36,16 @@ public class UI extends JFrame {
 		botonera.setBounds(122, 58, 228, 181);
 		contentPane.add(botonera);
 		botonera.setLayout(new GridLayout(3, 3, 0, 0));
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(303, 23, 89, 23);
+		contentPane.add(btnNewButton);
 		MyActionListener myActionListener=new MyActionListener();
 		for (int i = 0; i < dimension; i++) {
 			for (int j = 0; j < dimension; j++) {
-				MyJButton comp = new MyJButton(i,j);
+				JButton comp = new JButton();
 				comp.addActionListener(myActionListener);
+				comp.setName(i+":"+j);
 				botonera.add(comp);
 			}
 		}

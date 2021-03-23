@@ -1,15 +1,12 @@
 package control;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import vista.MyJButton;
 
 public class MyActionListener implements ActionListener {
+
 
 	public MyActionListener() {
 
@@ -18,8 +15,10 @@ public class MyActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// objeto componente que dispara el evento
-		MyJButton boton = (MyJButton) e.getSource();
-		System.out.println("posicion "+boton.getX()+":"+boton.getY());
+		JButton boton =  (JButton)e.getSource();
+		String[] split = boton.getName().split(":");
+		System.out.println("posicion x"+split[0]);
+		System.out.println("posicion y"+split[1]);
 	}
 
 }
