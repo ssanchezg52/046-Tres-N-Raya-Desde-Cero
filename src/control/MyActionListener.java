@@ -7,31 +7,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import vista.MyJButton;
+
 public class MyActionListener implements ActionListener {
 
-	private JButton[][] miBotonera;
-	
-	public MyActionListener(JButton[][] miBotonera) {
-		this.miBotonera=miBotonera;
+	public MyActionListener() {
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("pulsado");
-		//objeto componente que dispara el evento
-		JButton boton=(JButton)e.getSource();
-		findMyButton(boton);
-		//Es la chapuza total
-	}
-
-	private void findMyButton(JButton boton) {
-		for (int i = 0; i < miBotonera.length; i++) {
-			for (int j = 0; j < miBotonera[i].length; j++) {
-				if(miBotonera[i][j]==boton) {
-					System.out.println("en la posicion "+i+":"+j);
-				}
-			}
-		}		
+		// objeto componente que dispara el evento
+		MyJButton boton = (MyJButton) e.getSource();
+		System.out.println("posicion "+boton.getX()+":"+boton.getY());
 	}
 
 }

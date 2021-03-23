@@ -35,14 +35,12 @@ public class UI extends JFrame {
 		botonera.setBounds(122, 58, 228, 181);
 		contentPane.add(botonera);
 		botonera.setLayout(new GridLayout(3, 3, 0, 0));
-		JButton miBotonera[][]=new JButton[dimension][dimension]; 
-		MyActionListener myActionListener=new MyActionListener(miBotonera);
+		MyActionListener myActionListener=new MyActionListener();
 		for (int i = 0; i < dimension; i++) {
 			for (int j = 0; j < dimension; j++) {
-				JButton comp = new JButton();
+				MyJButton comp = new MyJButton(i,j);
 				comp.addActionListener(myActionListener);
 				botonera.add(comp);
-				miBotonera[i][j]=comp;
 			}
 		}
 	}
