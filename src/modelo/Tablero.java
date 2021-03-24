@@ -21,5 +21,10 @@ public class Tablero {
 			}
 		}
 	}
+
+	public void XXXX(Coordenada coordenada) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
