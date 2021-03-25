@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import utiles.RespuestaColocacion;
 import vista.UI;
 
 public class ParaUI extends UI {
@@ -37,14 +38,14 @@ public class ParaUI extends UI {
 				System.out.println("posicion y" + split[1]);
 				// llegare aqui cuando alguien hay pulsado un boton
 //				de la botonera
-				if(control.colocarFicha(boton.getName())) {
+				RespuestaColocacion respuestaColocacion = control.colocarFicha(boton.getName());
+				if(respuestaColocacion.isRespuesta()) {
 					//si estoy aqui es porque ha habido un cambio
 					//por lo tanto debo mostrarlo
 					boton.setText(control.getTipoAnteriorName());
-					lblMensaje.setText("");
-				}else {
-					lblMensaje.setText(control.getErrorName());
 				}
+				lblMensaje.setText(respuestaColocacion.getMensaje());
+				
 			}
 
 		};

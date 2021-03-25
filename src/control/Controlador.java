@@ -2,6 +2,7 @@ package control;
 
 import modelo.Coordenada;
 import modelo.GestionDatos;
+import utiles.RespuestaColocacion;
 
 public class Controlador {
 	private GestionDatos gestion;
@@ -12,7 +13,7 @@ public class Controlador {
 	}
 	
 	//void no es
-	public boolean colocarFicha(String posicion){
+	public RespuestaColocacion colocarFicha(String posicion){
 		return this.gestion.colocarFicha(new Coordenada(posicion));
 	}
 
@@ -24,8 +25,8 @@ public class Controlador {
 		return this.gestion.getTipoAnteriorName();
 	}
 
-	public String getErrorName() {
-		return this.gestion.getErrorActualName();
-	}
+//	public String getErrorName() {
+//		return this.gestion.getErrorActualName();
+//	}
 
 }

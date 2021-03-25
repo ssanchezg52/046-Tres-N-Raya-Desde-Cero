@@ -1,5 +1,7 @@
 package modelo;
 
+import utiles.RespuestaColocacion;
+
 public class Tablero {
 
 	private int dimension = 3;
@@ -23,15 +25,18 @@ public class Tablero {
 		}
 	}
 
-	public boolean colocarFicha(Coordenada coordenada,Tipo tipoActual) {
+	public RespuestaColocacion colocarFicha(Coordenada coordenada,Tipo tipoActual) {
+		RespuestaColocacion respuesta=new RespuestaColocacion();
 		if (matriz[coordenada.getX()][coordenada.getY()] == Tipo.blanco) {
 			matriz[coordenada.getX()][coordenada.getY()] = tipoActual;
 			System.out.println("coordenada puesta");
-			this.errorActual="";
-			return true;
+			respuesta.setRespuesta(true);
+			respuesta.setMensaje("");
+			return respuesta;
 		}
-		this.errorActual="casilla no vacia";
-		return false;
+		respuesta.setRespuesta(false);
+		respuesta.setMensaje("casilla no vacia");
+		return respuesta;
 	}
 
 	public String getErrorActual() {

@@ -1,5 +1,7 @@
 package modelo;
 
+import utiles.RespuestaColocacion;
+
 public class GestionDatos {
 	private Tablero tablero;
 	private Juego juego;
@@ -10,12 +12,12 @@ public class GestionDatos {
 		juego=new Juego();
 	}
 
-	public boolean colocarFicha(Coordenada coordenada) {
-		if(this.tablero.colocarFicha(coordenada,this.juego.getTurnoActual())) {
+	public RespuestaColocacion colocarFicha(Coordenada coordenada) {
+		RespuestaColocacion respuesta = this.tablero.colocarFicha(coordenada,this.juego.getTurnoActual());
+		if(respuesta.isRespuesta()) {
 			this.juego.incrementaJugada();
-			return true;
 		}
-		return false;
+		return respuesta;
 	}
 
 	public String getTipoActualName() {
@@ -26,8 +28,8 @@ public class GestionDatos {
 		return this.juego.getTurnoAnteriorName();
 	}
 
-	public String getErrorActualName() {
-		return this.tablero.getErrorActual();
-	}
-	
+//	public RespuestaColocacion getErrorActualName() {
+//		return this.tablero.getErrorActual();
+//	}
+//	
 }
