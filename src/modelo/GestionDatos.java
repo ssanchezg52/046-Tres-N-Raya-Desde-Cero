@@ -10,8 +10,20 @@ public class GestionDatos {
 		juego=new Juego();
 	}
 
-	public void XXXX(Coordenada coordenada) {
-		this.tablero.XXXX(coordenada);
+	public boolean colocarFicha(Coordenada coordenada) {
+		if(this.tablero.colocarFicha(coordenada,this.juego.getTurnoActual())) {
+			this.juego.incrementaJugada();
+			return true;
+		}
+		return false;
+	}
+
+	public String getTipoActualName() {
+		return this.juego.getTurnoActualName();
+	}
+
+	public String getTipoAnteriorName() {
+		return this.juego.getTurnoAnteriorName();
 	}
 	
 }

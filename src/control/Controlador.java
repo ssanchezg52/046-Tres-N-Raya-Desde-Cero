@@ -12,8 +12,16 @@ public class Controlador {
 	}
 	
 	//void no es
-	public void XXXX(String posicion){
-		this.gestion.XXXX(new Coordenada(posicion));
+	public boolean colocarFicha(String posicion){
+		return this.gestion.colocarFicha(new Coordenada(posicion));
+	}
+
+	public String getTipoName() {
+		return this.gestion.getTipoActualName();
+	}
+
+	public String getTipoAnteriorName() {
+		return this.gestion.getTipoAnteriorName();
 	}
 
 }

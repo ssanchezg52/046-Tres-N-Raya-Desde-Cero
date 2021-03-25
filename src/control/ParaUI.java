@@ -37,7 +37,11 @@ public class ParaUI extends UI {
 				System.out.println("posicion y" + split[1]);
 				// llegare aqui cuando alguien hay pulsado un boton
 //				de la botonera
-				control.XXXX(boton.getName());
+				if(control.colocarFicha(boton.getName())) {
+					//si estoy aqui es porque ha habido un cambio
+					//por lo tanto debo mostrarlo
+					boton.setText(control.getTipoAnteriorName());
+				}
 			}
 
 		};
