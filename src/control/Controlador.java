@@ -24,4 +24,8 @@ public class Controlador {
 		return this.gestion.getTipoAnteriorName();
 	}
 
+	public String getErrorName() {
+		return this.gestion.getErrorActualName();
+	}
+
 }

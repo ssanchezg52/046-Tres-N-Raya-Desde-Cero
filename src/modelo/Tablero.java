@@ -4,6 +4,7 @@ public class Tablero {
 
 	private int dimension = 3;
 	private Tipo matriz[][] = new Tipo[dimension][dimension];
+	private String errorActual="";
 
 	public Tipo getValorCasilla(int x, int y) {
 		return matriz[x][y];
@@ -26,9 +27,15 @@ public class Tablero {
 		if (matriz[coordenada.getX()][coordenada.getY()] == Tipo.blanco) {
 			matriz[coordenada.getX()][coordenada.getY()] = tipoActual;
 			System.out.println("coordenada puesta");
+			this.errorActual="";
 			return true;
 		}
+		this.errorActual="casilla no vacia";
 		return false;
+	}
+
+	public String getErrorActual() {
+		return this.errorActual;
 	}
 
 }

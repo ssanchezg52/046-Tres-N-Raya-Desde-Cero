@@ -25,5 +25,9 @@ public class GestionDatos {
 	public String getTipoAnteriorName() {
 		return this.juego.getTurnoAnteriorName();
 	}
+
+	public String getErrorActualName() {
+		return this.tablero.getErrorActual();
+	}
 	
 }

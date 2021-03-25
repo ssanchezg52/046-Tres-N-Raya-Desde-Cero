@@ -41,6 +41,9 @@ public class ParaUI extends UI {
 					//si estoy aqui es porque ha habido un cambio
 					//por lo tanto debo mostrarlo
 					boton.setText(control.getTipoAnteriorName());
+					lblMensaje.setText("");
+				}else {
+					lblMensaje.setText(control.getErrorName());
 				}
 			}
 
