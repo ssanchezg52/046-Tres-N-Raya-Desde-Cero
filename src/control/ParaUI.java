@@ -34,11 +34,11 @@ public class ParaUI extends UI {
 				// objeto componente que dispara el evento
 				JButton boton = (JButton) e.getSource();
 				String[] split = boton.getName().split(":");
-				System.out.println("posicion x" + split[0]);
-				System.out.println("posicion y" + split[1]);
+//				System.out.println("posicion x" + split[0]);
+//				System.out.println("posicion y" + split[1]);
 				// llegare aqui cuando alguien hay pulsado un boton
 //				de la botonera
-				RespuestaColocacion respuestaColocacion = control.colocarFicha(boton.getName());
+				RespuestaColocacion respuestaColocacion = control.realizarJugada(boton.getName());
 				if(respuestaColocacion.isRespuesta()) {
 					//si estoy aqui es porque ha habido un cambio
 					//por lo tanto debo mostrarlo

@@ -22,7 +22,16 @@ public class Coordenada {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	
+	/**
+	 * 
+	 * @return true si son contiguas
+	 */
+	public boolean isContigua(Coordenada uno) {
+		//TODO
+		return false;
+	}
+	
 	public int getX() {
 		return x;
 	}

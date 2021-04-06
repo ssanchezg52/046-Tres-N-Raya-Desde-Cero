@@ -38,4 +38,8 @@ public class Juego {
 	public String getTurnoAnteriorName() {
 		return getTurnoAnterior().getNombre();
 	}
+
+	public boolean isMover() {
+		return this.numeroJugada>6;
+	}
 }

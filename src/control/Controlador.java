@@ -13,8 +13,8 @@ public class Controlador {
 	}
 	
 	//void no es
-	public RespuestaColocacion colocarFicha(String posicion){
-		return this.gestion.colocarFicha(new Coordenada(posicion));
+	public RespuestaColocacion realizarJugada(String posicion){
+		return this.gestion.realizarJugada(new Coordenada(posicion));
 	}
 
 	public String getTipoName() {

@@ -8,6 +8,14 @@ public class RespuestaColocacion {
 		super();
 	}
 
+	
+	public RespuestaColocacion(boolean respuesta, String mensaje) {
+		super();
+		this.respuesta = respuesta;
+		this.mensaje = mensaje;
+	}
+
+
 	public boolean isRespuesta() {
 		return respuesta;
 	}
