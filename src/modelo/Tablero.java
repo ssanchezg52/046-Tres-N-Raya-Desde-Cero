@@ -42,9 +42,10 @@ public class Tablero {
 		RespuestaColocacion respuesta = new RespuestaColocacion();
 		if (matriz[coordenada.getX()][coordenada.getY()] == Tipo.blanco) {
 			matriz[coordenada.getX()][coordenada.getY()] = tipoActual;
-			System.out.println("coordenada puesta");
+//			System.out.println("coordenada puesta");
 			respuesta.setRespuesta(true);
 			respuesta.setMensaje("");
+			respuesta.setTipo(getPosicion(coordenada));
 			return respuesta;
 		}
 		respuesta.setRespuesta(false);
@@ -52,7 +53,7 @@ public class Tablero {
 		return respuesta;
 	}
 
-	private Tipo getPosicion(Coordenada coordenada) {
+	public Tipo getPosicion(Coordenada coordenada) {
 		return matriz[coordenada.getX()][coordenada.getY()];
 	}
 
@@ -76,6 +77,10 @@ public class Tablero {
 
 	public String getErrorActual() {
 		return this.errorActual;
+	}
+
+	public boolean isPropiedad(Coordenada coordenada, Tipo tipo) {
+		return getPosicion(coordenada)==tipo;
 	}
 
 }

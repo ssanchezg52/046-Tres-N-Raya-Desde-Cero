@@ -19,11 +19,13 @@ class GestionDatosTest {
 		}
 		//Ahora que hago
 		//primera parte donde borramos una ficha no bloqueada del turno
-		RespuestaColocacion realizarJugada = gestion.realizarJugada(new Coordenada(0,1));
+		RespuestaColocacion realizarJugada = gestion.realizarJugada(new Coordenada(1,1));
+		assertFalse(realizarJugada.isRespuesta());
+		realizarJugada = gestion.realizarJugada(new Coordenada(0,1));
 		assertTrue(realizarJugada.isRespuesta());
 		//ahora la vamos a poner en una posicion contigua
-//		RespuestaColocacion realizarJugada2 = gestion.realizarJugada(new Coordenada(0,0));
-//		assertTrue(realizarJugada2.isRespuesta());
+		RespuestaColocacion realizarJugada2 = gestion.realizarJugada(new Coordenada(0,0));
+		assertTrue(realizarJugada2.isRespuesta());
 	}
 
 }

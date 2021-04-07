@@ -42,10 +42,9 @@ public class ParaUI extends UI {
 				if(respuestaColocacion.isRespuesta()) {
 					//si estoy aqui es porque ha habido un cambio
 					//por lo tanto debo mostrarlo
-					boton.setText(control.getTipoAnteriorName());
+					boton.setText(respuestaColocacion.getTipo().getNombre());
 				}
 				lblMensaje.setText(respuestaColocacion.getMensaje());
-				
 			}
 
 		};

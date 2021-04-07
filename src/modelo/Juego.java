@@ -4,6 +4,7 @@ public class Juego {
 	private int cantidadJugadores = 2;
 	private int cantidadFichas = 3;
 	private int numeroJugada = 1;
+	private boolean mover=false;
 
 	public String getTurnoActualName() {
 		// si es impar le toca a X
@@ -19,6 +20,10 @@ public class Juego {
 
 	public void incrementaJugada() {
 		this.numeroJugada++;
+		if(this.numeroJugada>6) {
+			this.setMover(true);
+		}
+		
 
 	}
 //	public String getTurnoAnteriorName() {
@@ -40,6 +45,11 @@ public class Juego {
 	}
 
 	public boolean isMover() {
-		return this.numeroJugada>6;
+		return this.mover;
+	}
+
+	public void setMover(boolean b) {
+		this.mover=b;
+		
 	}
 }

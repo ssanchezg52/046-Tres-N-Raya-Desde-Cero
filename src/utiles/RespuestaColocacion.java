@@ -1,8 +1,30 @@
 package utiles;
 
+import modelo.Tipo;
+
 public class RespuestaColocacion {
 	private boolean respuesta;
 	private String mensaje;
+	private Tipo tipo;
+
+	
+	public RespuestaColocacion(boolean respuesta, String mensaje, Tipo tipo) {
+		super();
+		this.respuesta = respuesta;
+		this.mensaje = mensaje;
+		this.tipo = tipo;
+	}
+
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
 
 	public RespuestaColocacion() {
 		super();
