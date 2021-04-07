@@ -38,19 +38,23 @@ public class Tablero {
 
 	}
 
-	public RespuestaColocacion colocarFicha(Coordenada coordenada, Tipo tipoActual) {
-		RespuestaColocacion respuesta = new RespuestaColocacion();
+	public boolean borrarCasilla(Coordenada coordenada, Tipo tipo) {
+		// primero hay que borrar una casilla no bloqueada de tu turno
+		if (isPropiedad(coordenada, tipo) && !comprobarCasillaBloqueada(coordenada)) {
+			limpiarCasilla(coordenada);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean colocarFicha(Coordenada coordenada, Tipo tipoActual) {
+		
 		if (matriz[coordenada.getX()][coordenada.getY()] == Tipo.blanco) {
 			matriz[coordenada.getX()][coordenada.getY()] = tipoActual;
 //			System.out.println("coordenada puesta");
-			respuesta.setRespuesta(true);
-			respuesta.setMensaje("");
-			respuesta.setTipo(getPosicion(coordenada));
-			return respuesta;
+			return true;
 		}
-		respuesta.setRespuesta(false);
-		respuesta.setMensaje("casilla no vacia");
-		return respuesta;
+		return false;
 	}
 
 	public Tipo getPosicion(Coordenada coordenada) {
@@ -80,7 +84,7 @@ public class Tablero {
 	}
 
 	public boolean isPropiedad(Coordenada coordenada, Tipo tipo) {
-		return getPosicion(coordenada)==tipo;
+		return getPosicion(coordenada) == tipo;
 	}
 
 }

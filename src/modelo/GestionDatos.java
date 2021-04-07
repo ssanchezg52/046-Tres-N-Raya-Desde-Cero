@@ -14,41 +14,39 @@ public class GestionDatos {
 	}
 
 	public RespuestaColocacion realizarJugada(Coordenada coordenada) {
+		RespuestaColocacion respuesta = new RespuestaColocacion();
 		// A partir de la septima jugada
 		if (juego.isMover()) {
-			// primero hay que borrar una casilla no bloqueada de tu turno
-			if (tablero.isPropiedad(coordenada, this.juego.getTurnoActual())
-					&& !tablero.comprobarCasillaBloqueada(coordenada)) {
-				tablero.limpiarCasilla(coordenada);
+			if (tablero.borrarCasilla(coordenada, this.juego.getTurnoActual())) {
 				this.juego.setMover(false);
 				antigua = coordenada;
 				return new RespuestaColocacion(true, "", tablero.getPosicion(coordenada));
 			} else {
-				return new RespuestaColocacion(false, "esa casilla no es tuya",tablero.getPosicion(coordenada));
+				return new RespuestaColocacion(false, "esa casilla no es tuya", tablero.getPosicion(coordenada));
 			}
 			// luego hay que colocar en un casilla libre contigua
-		} else {
+		} else if (juego.isJugadaMovimiento()) {
 			return colocarFicha(coordenada, antigua);
+		} else {
+			return colocarFicha(coordenada);
 		}
+
 	}
 
 	private RespuestaColocacion colocarFicha(Coordenada coordenada, Coordenada antigua) {
-		if (antigua == null) {
+		if (coordenada.isContigua(antigua)) {
 			return colocarFicha(coordenada);
-		} else {
-			if (coordenada.isContigua(antigua)) {
-				return colocarFicha(coordenada);
-			}
-			return new RespuestaColocacion(false, "no es contigua",tablero.getPosicion(coordenada));
 		}
+		return new RespuestaColocacion(false, "no es contigua", tablero.getPosicion(coordenada));
 	}
 
 	private RespuestaColocacion colocarFicha(Coordenada coordenada) {
-		RespuestaColocacion respuesta = this.tablero.colocarFicha(coordenada, this.juego.getTurnoActual());
-		if (respuesta.isRespuesta()) {
+		boolean colocada = this.tablero.colocarFicha(coordenada, this.juego.getTurnoActual());
+		if (colocada) {
 			this.juego.incrementaJugada();
+			return new RespuestaColocacion(true, "", tablero.getPosicion(coordenada));
 		}
-		return respuesta;
+		return new RespuestaColocacion(false, "no esta vacia", tablero.getPosicion(coordenada));
 	}
 
 	public String getTipoActualName() {
