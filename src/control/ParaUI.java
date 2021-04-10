@@ -7,16 +7,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import utiles.RespuestaColocacion;
+import utiles.RespuestaTresEnRaya;
 import vista.UI;
 
 public class ParaUI extends UI {
 	private ActionListener acctionListener;
 	private Controlador control;
+	private boolean hayGanador;
 
 	public ParaUI() {
 		super();
 		this.preparameEsaBotonera();
-		control = new Controlador();
+		this.control = new Controlador();
+		this.hayGanador = false;
 	}
 
 	private void preparameEsaBotonera() {
@@ -32,19 +35,29 @@ public class ParaUI extends UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// objeto componente que dispara el evento
-				JButton boton = (JButton) e.getSource();
-				String[] split = boton.getName().split(":");
-//				System.out.println("posicion x" + split[0]);
-//				System.out.println("posicion y" + split[1]);
-				// llegare aqui cuando alguien hay pulsado un boton
-//				de la botonera
-				RespuestaColocacion respuestaColocacion = control.realizarJugada(boton.getName());
-				if(respuestaColocacion.isRespuesta()) {
-					//si estoy aqui es porque ha habido un cambio
-					//por lo tanto debo mostrarlo
-					boton.setText(respuestaColocacion.getTipo().getNombre());
+				if (hayGanador != true) {
+					JButton boton = (JButton) e.getSource();
+					String[] split = boton.getName().split(":");
+					RespuestaTresEnRaya respuesta = new RespuestaTresEnRaya();
+//					System.out.println("posicion x" + split[0]);
+//					System.out.println("posicion y" + split[1]);
+					// llegare aqui cuando alguien hay pulsado un boton
+//					de la botonera
+					RespuestaColocacion respuestaColocacion = control.realizarJugada(boton.getName());
+					if (respuestaColocacion.isRespuesta()) {
+						// si estoy aqui es porque ha habido un cambio
+						// por lo tanto debo mostrarlo
+						boton.setText(respuestaColocacion.getTipo().getNombre());
+						respuesta = control.comprobacionTresEnRaya();
+					}
+					if (respuesta.isRespuesta() == true) {
+						lblMensaje.setText(respuesta.Mensajeganador());
+						hayGanador = true;
+					}else {
+						lblMensaje.setText(respuestaColocacion.getMensaje());
+					}
 				}
-				lblMensaje.setText(respuestaColocacion.getMensaje());
+				
 			}
 
 		};

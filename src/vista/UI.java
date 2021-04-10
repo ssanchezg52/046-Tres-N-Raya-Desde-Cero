@@ -34,7 +34,7 @@ public class UI extends JFrame {
 		lblNewLabel.setBounds(10, 11, 75, 14);
 		contentPane.add(lblNewLabel);
 		
-		lblMensaje = new JLabel(" ");
+		lblMensaje = new JLabel("");
 		lblMensaje.setBounds(104, 11, 320, 14);
 		contentPane.add(lblMensaje);
 

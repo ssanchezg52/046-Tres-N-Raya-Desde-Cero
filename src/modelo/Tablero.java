@@ -1,6 +1,6 @@
 package modelo;
 
-import utiles.RespuestaColocacion;
+import utiles.RespuestaTresEnRaya;
 
 public class Tablero {
 
@@ -48,7 +48,7 @@ public class Tablero {
 	}
 
 	public boolean colocarFicha(Coordenada coordenada, Tipo tipoActual) {
-		
+
 		if (matriz[coordenada.getX()][coordenada.getY()] == Tipo.blanco) {
 			matriz[coordenada.getX()][coordenada.getY()] = tipoActual;
 //			System.out.println("coordenada puesta");
@@ -85,6 +85,68 @@ public class Tablero {
 
 	public boolean isPropiedad(Coordenada coordenada, Tipo tipo) {
 		return getPosicion(coordenada) == tipo;
+	}
+
+	public RespuestaTresEnRaya comprobarTresEnRayaHorizontal() {
+		boolean tresEnRaya = true;
+		for (int i = 0; i < matriz.length; i++) {
+			tresEnRaya = true;
+			for (int j = 0; j < matriz[i].length - 1 && tresEnRaya; j++) {
+				if (matriz[i][j] != matriz[i][j + 1] || matriz[i][j] == Tipo.blanco) {
+					tresEnRaya = false;
+				}
+				if (j == 1 && tresEnRaya) {
+					return new RespuestaTresEnRaya(tresEnRaya, this.matriz[i][j]);
+				}
+			}
+		}
+		return new RespuestaTresEnRaya(tresEnRaya);
+
+	}
+
+	public RespuestaTresEnRaya comprobarTresEnRayaVertical() {
+		boolean TresEnRaya = true;
+		for (int i = 0; i < matriz.length;i++) {
+			TresEnRaya = true;
+			for (int j = 0; j < matriz.length - 1 && TresEnRaya; j++) {
+				if (matriz[j][i] != matriz[j+1][i] || matriz[j][i] == Tipo.blanco) {
+					TresEnRaya = false;
+				}
+				if (j == 1 && TresEnRaya) {
+					return new RespuestaTresEnRaya(TresEnRaya, this.matriz[j][i]);
+				}
+			}
+		}
+		return new RespuestaTresEnRaya(TresEnRaya);
+	}
+
+	public RespuestaTresEnRaya comprobarTresEnRayaDiagonal() {
+		boolean TresEnRaya = true;
+		for (int i = 0; i < matriz.length - 1 && TresEnRaya;) {
+			for (int j = 0; j < matriz.length - 1 && TresEnRaya; j++, i++) {
+				if (matriz[i][j] != matriz[i + 1][j + 1] || matriz[i][j] == Tipo.blanco) {
+					TresEnRaya = false;
+				}
+				if (j == 1 && TresEnRaya) {
+					return new RespuestaTresEnRaya(TresEnRaya, this.matriz[i][j]);
+				}
+			}
+		}
+		if (!TresEnRaya) {
+			TresEnRaya = true;
+			for (int i = 0; i < matriz.length - 1 && TresEnRaya;) {
+				for (int j = 2; j >= 1 && TresEnRaya; j--, i++) {
+					if (matriz[i][j] != matriz[i + 1][j - 1] || matriz[i][j] == Tipo.blanco) {
+						TresEnRaya = false;
+					}
+					if (j == 1 && TresEnRaya) {
+						return new RespuestaTresEnRaya(TresEnRaya, this.matriz[i][j]);
+					}
+				}
+			}
+		}
+		return new RespuestaTresEnRaya(TresEnRaya);
+
 	}
 
 }

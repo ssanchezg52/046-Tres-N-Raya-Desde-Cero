@@ -14,6 +14,10 @@ public class RespuestaColocacion {
 		this.mensaje = mensaje;
 		this.tipo = tipo;
 	}
+	
+	public RespuestaColocacion(String respuesta) {
+		this.mensaje = respuesta;
+	}
 
 
 	public Tipo getTipo() {
