@@ -34,13 +34,11 @@ public class ParaUI extends UI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// objeto componente que dispara el evento
-				if (hayGanador != true) {
+//				if (hayGanador != true) {
+//					objeto componente que dispara el evento
 					JButton boton = (JButton) e.getSource();
 					String[] split = boton.getName().split(":");
 					RespuestaTresEnRaya respuesta = new RespuestaTresEnRaya();
-//					System.out.println("posicion x" + split[0]);
-//					System.out.println("posicion y" + split[1]);
 					// llegare aqui cuando alguien hay pulsado un boton
 //					de la botonera
 					RespuestaColocacion respuestaColocacion = control.realizarJugada(boton.getName());
@@ -48,17 +46,19 @@ public class ParaUI extends UI {
 						// si estoy aqui es porque ha habido un cambio
 						// por lo tanto debo mostrarlo
 						boton.setText(respuestaColocacion.getTipo().getNombre());
+//						Esta funcion ira comprobando si el numero de jugada es mayor de 5 y cuando lo sea comprobara si hay tres en raya
 						respuesta = control.comprobacionTresEnRaya();
 					}
 					if (respuesta.isRespuesta() == true) {
 						lblMensaje.setText(respuesta.Mensajeganador());
-						hayGanador = true;
+//						hayGanador = true;
+						visualizarBotones(false);
 					}else {
 						lblMensaje.setText(respuestaColocacion.getMensaje());
 					}
 				}
 				
-			}
+//			}
 
 		};
 	}

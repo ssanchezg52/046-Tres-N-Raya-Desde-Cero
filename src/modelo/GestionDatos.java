@@ -42,7 +42,7 @@ public class GestionDatos {
 		return new RespuestaTresEnRaya(false);
 	}
 	
-	private RespuestaTresEnRaya comprobarTresEnRaya() {
+	public RespuestaTresEnRaya comprobarTresEnRaya() {
 		if (!respuesta.isTresEnRaya(this.tablero.comprobarTresEnRayaHorizontal())) {
 			if (!respuesta.isTresEnRaya(this.tablero.comprobarTresEnRayaVertical())) {
 				return this.tablero.comprobarTresEnRayaDiagonal();

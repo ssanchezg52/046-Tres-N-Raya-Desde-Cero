@@ -37,17 +37,16 @@ class GestionDatosTest {
 
 	@Test
 	void testTresEnRaya() {
-		Tablero tablero = new Tablero();
 		GestionDatos gestion = new GestionDatos();
 		int posX[] = { 0, 0, 1, 2, 2, 2 };
 		int posY[] = { 0, 2, 1, 1, 2, 0 };
 		Tipo[] tipos = { Tipo.X, Tipo.O, Tipo.X, Tipo.O, Tipo.X, Tipo.O };
 
 		for (int i = 0; i < tipos.length; i++) {
-			tablero.colocarFicha(new Coordenada(posX[i], posY[i]), tipos[i]);
+			gestion.realizarJugada(new Coordenada(posX[i], posY[i]));
 		}
 
-//		assertTrue(new RespuestaTresEnRaya(true, Tipo.X).equals(gestion.comprobarTresEnRaya()));
+		assertTrue(new RespuestaTresEnRaya(true, Tipo.X).equals(gestion.comprobarTresEnRaya()));
 
 	}
 }

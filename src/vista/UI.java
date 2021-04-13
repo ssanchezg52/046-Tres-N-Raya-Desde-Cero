@@ -1,6 +1,8 @@
 package vista;
 
+import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,11 +31,11 @@ public class UI extends JFrame {
 		botonera.setBounds(122, 58, 228, 181);
 		contentPane.add(botonera);
 		botonera.setLayout(new GridLayout(3, 3, 0, 0));
-		
+
 		JLabel lblNewLabel = new JLabel("Mensaje");
 		lblNewLabel.setBounds(10, 11, 75, 14);
 		contentPane.add(lblNewLabel);
-		
+
 		lblMensaje = new JLabel("");
 		lblMensaje.setBounds(104, 11, 320, 14);
 		contentPane.add(lblMensaje);
@@ -44,6 +46,16 @@ public class UI extends JFrame {
 				comp.setName(i + ":" + j);
 				botonera.add(comp);
 			}
+		}
+
+	}
+
+	protected void visualizarBotones(boolean bandera) {
+
+		Component[] components = this.botonera.getComponents();
+
+		for (Component component : components) {
+			component.setEnabled(bandera);
 		}
 	}
 }

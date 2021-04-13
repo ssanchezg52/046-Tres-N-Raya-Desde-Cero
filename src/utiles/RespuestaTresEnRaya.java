@@ -40,7 +40,7 @@ public class RespuestaTresEnRaya {
 	}
 	
 	public String Mensajeganador() {
-		return this.mensajeGanador = "ha ganado " + this.getTipo();
+		return this.mensajeGanador = "TRES EN RAYA!!! HA GANADO " + this.getTipo();
 	}
 	
 	public boolean isRespuesta() {
